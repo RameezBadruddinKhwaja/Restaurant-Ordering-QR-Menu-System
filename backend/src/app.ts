@@ -11,6 +11,11 @@ import { apiLimiter } from './middleware/rateLimiter';
 
 // Import routes
 import authRoutes from './routes/auth.routes';
+import restaurantRoutes from './routes/restaurant.routes';
+import menuRoutes from './routes/menu.routes';
+import tableRoutes from './routes/table.routes';
+import orderRoutes from './routes/order.routes';
+import paymentRoutes from './routes/payment.routes';
 
 const app: Application = express();
 
@@ -55,6 +60,11 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api/auth', apiLimiter, authRoutes);
+app.use('/api/restaurants', restaurantRoutes);
+app.use('/api/menu', menuRoutes);
+app.use('/api/tables', tableRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // 404 handler
 app.use(notFoundHandler);
